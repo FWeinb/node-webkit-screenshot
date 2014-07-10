@@ -2,6 +2,7 @@
   "name": "node-webkit-screenshot",
   "version": "0.1.0",
   "description": "Take screenshots using node-webkit@0.10.0-rc1",
+  "repository": "FWeinb/node-webkit-screenshot",
   "main": "index.js",
   "scripts": {
     "test": "mocha test"
@@ -11,6 +12,10 @@
     "node-webkit",
     "webkit",
     "node"
+  ],
+  "files": [
+    "nw-screenshot",
+    "index.js"
   ],
   "author": "Fabrice Weinberg <Fabrice@weinberg.me>",
   "engines": {
