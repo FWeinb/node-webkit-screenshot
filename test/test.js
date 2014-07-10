@@ -10,10 +10,12 @@ var isJpg = require('is-jpg');
 
 var screenshot = require('./../index.js');
 
+var timeout = 60000;
+
 describe('screenshot', function(){
 
   it('should produce pngs', function(done){
-    this.timeout(0);
+    this.timeout(timeout);
     var stream = screenshot({url : 'about:config', width : 500, height : 500});
 
     stream.pipe(concat(function (data) {
@@ -24,7 +26,7 @@ describe('screenshot', function(){
   });
 
   it('should have a `delay` option', function(done){
-    this.timeout(0);
+    this.timeout(timeout);
     var stream = screenshot({url : 'about:config', delay : 2, width : 500, height : 500});
 
     var now = new Date();
@@ -35,7 +37,7 @@ describe('screenshot', function(){
   });
 
   it('should have a `format` option', function(done){
-    this.timeout(0);
+    this.timeout(timeout);
     var stream = screenshot({url : 'about:config', width : 500, height : 500, format : 'jpeg'});
 
     stream.pipe(concat(function (data) {
@@ -47,6 +49,8 @@ describe('screenshot', function(){
 
 
   it('should create a screenshot with 500x500 pixels', function(done){
+    this.timeout(timeout);
+
     var stream = screenshot({url : 'about:config', width : 500, height : 500});
 
     stream.pipe(concat(function (data) {
