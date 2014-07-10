@@ -1,0 +1,29 @@
+{
+  "name": "node-webkit-screenshot",
+  "version": "0.1.0",
+  "description": "Take screenshots using node-webkit@0.10.0-rc1",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "keywords": [
+    "screenshot",
+    "node-webkit",
+    "webkit",
+    "node"
+  ],
+  "author": "Fabrice Weinberg <Fabrice@weinberg.me>",
+  "license": "MIT",
+  "dependencies": {
+    "nodewebkit": "^0.10.0-rc1",
+    "win-spawn": "^2.0.0"
+  },
+  "devDependencies": {
+    "assert": "^1.1.1",
+    "image-size": "^0.3.0",
+    "lodash.once": "^2.4.1",
+    "concat-stream": "^1.4.6",
+    "is-png": "^0.1.1",
+    "is-jpg": "^0.1.2"
+  }
+}
