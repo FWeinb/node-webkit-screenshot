@@ -62,4 +62,20 @@ describe('screenshot', function(){
 
   });
 
+
+
+  it('should create a screenshot with 300x300 pixels', function(done){
+    this.timeout(timeout);
+
+    var stream = screenshot({url : 'about:config', width : 300, height : 300});
+
+    stream.pipe(concat(function (data) {
+      var size = imageSize(data);
+      assert.equal(size.width, 300);
+      assert.equal(size.height, 300);
+      done();
+    }));
+
+  });
+
 });
