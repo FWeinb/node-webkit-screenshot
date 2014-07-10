@@ -4,7 +4,7 @@
   "description": "Take screenshots using node-webkit@0.10.0-rc1",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "mocha test"
   },
   "keywords": [
     "screenshot",
@@ -13,6 +13,9 @@
     "node"
   ],
   "author": "Fabrice Weinberg <Fabrice@weinberg.me>",
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "license": "MIT",
   "dependencies": {
     "nodewebkit": "^0.10.0-rc1",
