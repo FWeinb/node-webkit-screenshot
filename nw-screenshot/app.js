@@ -4,11 +4,18 @@
 var gui = nwrequire('nw.gui');
 var options = JSON.parse(gui.App.argv.toString());
 
+// Needed if the procces is running in a framebuffer (like on travis)
+var show = process.env.NODESCREENSHOT_SHOW === '1' ? true : false;
+
+if (show){
+  gui.Window.get().show()
+}
 
 var win = gui.Window.open(options.url, {
   width: options.width,
   height: options.height,
-  show: false
+  show: show,
+  frame: false
 });
 
 win.on('document-end', function(){
