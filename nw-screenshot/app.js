@@ -8,7 +8,13 @@ var options = JSON.parse(gui.App.argv.toString());
 var show = process.env.NODESCREENSHOT_SHOW === '1' ? true : false;
 
 if (show){
-  gui.Window.get().show()
+  gui.Window.get().show();
+}
+
+// It looks like the browser UI is taken into account on linux.
+// TODO(FWeinb): confirm this
+if ( process.platform === 'linux') {
+  options.height += 38;
 }
 
 var win = gui.Window.open(options.url, {
