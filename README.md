@@ -2,7 +2,7 @@ node-webkit-screenshot
 ---
 > Create screenshots using [node-webkit](https://github.com/rogerwang/node-webkit)
 
-### Install
+## Install
 
 ```shell
 npm install node-webkit-screenshot
@@ -53,6 +53,12 @@ Type: `int`
 Default: `0`
 
 Specify the height of the browser window
+
+## Troubleshooting
+
+If you like to use this on travis or with a framebuffer like xvfb than you need to set the environment variable
+`NODESCREENSHOT_SHOW` to `1`. (`export NODESCREENSHOT_SHOW`).
+See this `.travis.yml` for more information
 
 
 
