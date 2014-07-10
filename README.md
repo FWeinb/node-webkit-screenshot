@@ -1,4 +1,4 @@
-node-webkit-screenshot
+node-webkit-screenshot [![NPM version](https://badge.fury.io/js/node-webkit-screenshot.svg)](http://badge.fury.io/js/node-webkit-screenshot) [![Build Status](https://travis-ci.org/FWeinb/node-webkit-screenshot.svg?branch=master)](https://travis-ci.org/FWeinb/node-webkit-screenshot)
 ---
 > Create screenshots using [node-webkit](https://github.com/rogerwang/node-webkit)
 
