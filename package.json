@@ -23,7 +23,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "nodewebkit": "^0.10.0-rc1",
+    "nodewebkit": "0.10.0-rc1",
     "win-spawn": "^2.0.0"
   },
   "devDependencies": {
