@@ -58,7 +58,7 @@ Specify the height of the browser window
 
 If you like to use this on travis or with a framebuffer like xvfb than you need to set the environment variable
 `NODESCREENSHOT_SHOW` to `1`. (`export NODESCREENSHOT_SHOW`).
-See this `.travis.yml` for more information
+See this [`.travis.yml`](https://github.com/FWeinb/node-webkit-screenshot/blob/master/.travis.yml) for more information
 
 
 
