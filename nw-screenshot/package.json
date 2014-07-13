@@ -4,6 +4,9 @@
   "main": "index.html",
   "window": {
     "show": false,
-    "show_in_taskbar" : false
+    "show_in_taskbar": false
+  },
+  "dependencies": {
+    "socket.io-client": "^1.0.6"
   }
 }

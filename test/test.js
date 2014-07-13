@@ -3,8 +3,6 @@
 
 var assert = require('assert');
 var imageSize = require('image-size');
-var concat = require('concat-stream');
-var once = require('lodash.once');
 var isPng = require('is-png');
 var isJpg = require('is-jpg');
 
@@ -16,65 +14,51 @@ describe('screenshot', function(){
 
   it('should produce pngs', function(done){
     this.timeout(timeout);
-    var stream = screenshot({url : 'about:config', width : 500, height : 500});
 
-    stream.pipe(concat(function (data) {
+    screenshot({url : 'about:config', width : 500, height : 500}).then(function(data){
       assert.ok(isPng(data));
       done();
-    }));
+    });
 
   });
 
   it('should have a `delay` option', function(done){
     this.timeout(timeout);
-    var stream = screenshot({url : 'about:config', delay : 2, width : 500, height : 500});
-
     var now = new Date();
-    stream.on('data', once(function () {
+    screenshot({url : 'about:config', delay : 2, width : 500, height : 500})
+    .then(function(){
       assert((new Date()) - now > 2000);
       done();
-    }));
+    });
   });
 
   it('should have a `format` option', function(done){
     this.timeout(timeout);
-    var stream = screenshot({url : 'about:config', width : 500, height : 500, format : 'jpeg'});
-
-    stream.pipe(concat(function (data) {
+    screenshot({url : 'about:config', width : 500, height : 500, format : 'jpeg'}).then(function(data){
       assert.ok(isJpg(data));
       done();
-    }));
-
+    });
   });
-
 
   it('should create a screenshot with 500x500 pixels', function(done){
     this.timeout(timeout);
-
-    var stream = screenshot({url : 'about:config', width : 500, height : 500});
-
-    stream.pipe(concat(function (data) {
+    screenshot({url : 'about:config', width : 500, height : 500}).then(function(data){
       var size = imageSize(data);
       assert.equal(size.width, 500);
       assert.equal(size.height, 500);
       done();
-    }));
-
+    });
   });
-
-
 
   it('should create a screenshot with 300x300 pixels', function(done){
     this.timeout(timeout);
 
-    var stream = screenshot({url : 'about:config', width : 300, height : 300});
-
-    stream.pipe(concat(function (data) {
+    screenshot({url : 'about:config', width : 300, height : 300}).then(function(data){
       var size = imageSize(data);
       assert.equal(size.width, 300);
       assert.equal(size.height, 300);
       done();
-    }));
+    });
 
   });
 

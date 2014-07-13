@@ -1,26 +1,28 @@
 'use strict';
 
-var path = require('path');
-var spawn = require('win-spawn');
-var nodewebkit = require('nodewebkit').findpath();
-var app =  path.join(__dirname, 'nw-screenshot');
+var browserManager = require('./browser.js');
+var Promise = require('bluebird');
+
+
+process.on('exit', function() {
+ browserManager.close();
+});
 
 /**
  * Takes an options object liek
  * { url : '', delay : [seconds], width : [size], heihgt :  [size], format : 'png|jpeg' default png };
  * returns a stream
  */
-module.exports = function (options) {
+module.exports = function(options){
+  return new Promise(function(resolve, reject) {
 
-  if ( (options.format !== 'png' && options.format !== 'jpeg') || !options.format) {
-    options.format = 'png';
-  }
-
-  return spawn(nodewebkit, [
-    '.',
-    JSON.stringify(options)
-  ],{
-    cwd: app,
-    env: process.env
-  }).stdout;
+    browserManager
+    .getBrowser()
+    .then(function(browser){
+      browser
+      .screenshot(options)
+      .then(resolve)
+      .catch(reject);
+    });
+  });
 };
