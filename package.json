@@ -24,8 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "nodewebkit": "^0.10.0-rc1-3",
-    "win-spawn": "^2.0.0",
-    "sharp": "^0.5.1"
+    "win-spawn": "^2.0.0"
   },
   "devDependencies": {
     "assert": "^1.1.1",
