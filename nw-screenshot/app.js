@@ -47,6 +47,8 @@ function takeScreenshot(options, success /* error */){
   // TODO(FWeinb): confirm this
   if ( process.platform === 'linux') {
     options.height += 38;
+  } else if ( process.platform === 'win32' ) {
+    options.height += 60;
   }
 
   var win = gui.Window.open(options.url, {
