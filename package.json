@@ -1,7 +1,7 @@
 {
   "name": "node-webkit-screenshot",
-  "version": "0.1.0",
-  "description": "Take screenshots using node-webkit@0.10.0-rc1",
+  "version": "0.1.1",
+  "description": "Take screenshots using node-webkit",
   "repository": "FWeinb/node-webkit-screenshot",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "nodewebkit": "0.10.0-rc1",
-    "win-spawn": "^2.0.0"
+    "nodewebkit": "^0.10.0-rc1-3",
+    "win-spawn": "^2.0.0",
+    "sharp": "^0.5.1"
   },
   "devDependencies": {
     "assert": "^1.1.1",

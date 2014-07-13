@@ -2,7 +2,7 @@
 
 var path = require('path');
 var spawn = require('win-spawn');
-var nodewebkit = require('./node_modules/nodewebkit/lib/findpath.js')();
+var nodewebkit = require('nodewebkit').findpath();
 var app =  path.join(__dirname, 'nw-screenshot');
 
 /**
