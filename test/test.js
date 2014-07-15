@@ -62,4 +62,40 @@ describe('screenshot', function(){
 
   });
 
+  it('should create a screenshot with 300x300 pixels croped to 100x100', function(done){
+    this.timeout(timeout);
+
+    screenshot({url : 'about:config', width : 300, height : 300, crop : { width: 100, height :100 } }).then(function(data){
+      var size = imageSize(data);
+      assert.equal(size.width, 100);
+      assert.equal(size.height, 100);
+      done();
+    });
+
+  });
+
+
+  it('should throw an error if jpeg should be croped', function(done){
+    this.timeout(timeout);
+
+    screenshot({url : 'about:config', width : 300, height : 300, format : 'jpeg', crop : { width: 100, height :100 } })
+    .catch(function(err){
+      assert.equal(err, 'Can\'t crop image');
+      done();
+    });
+
+  });
+
+
+  it('should warn about missing `height`', function(done){
+    this.timeout(timeout);
+
+    screenshot({url : 'about:config', width : 500})
+    .catch(function(err){
+      assert.equal(err, 'At least `height` and `width` must be set');
+      done();
+    });
+
+  });
+
 });

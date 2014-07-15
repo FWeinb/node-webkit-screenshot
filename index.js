@@ -15,7 +15,6 @@ process.on('exit', function() {
  */
 module.exports = function(options){
   return new Promise(function(resolve, reject) {
-
     browserManager
     .getBrowser()
     .then(function(browser){

@@ -1,6 +1,6 @@
 {
   "name": "node-webkit-screenshot",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Take screenshots using node-webkit",
   "repository": "FWeinb/node-webkit-screenshot",
   "main": "index.js",

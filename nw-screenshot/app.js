@@ -2,6 +2,8 @@
 /* globals nwrequire */
 
 var gui = nwrequire('nw.gui');
+var PNGCrop = require('png-crop');
+var toArray = require('stream-to-array')
 var socket = require('socket.io-client')('http://localhost:3000');
 
 var show = process.env.NODESCREENSHOT_SHOW === '1' ? true : false;
@@ -12,22 +14,42 @@ if (show){
 
 socket.on('connect', function(){
 
-  var emitSuccess = function( id, data ){
-    socket.emit('screenshot', {
-      id : id,
-      data : data
-    });
-  };
-
-  var emitError = function( id, error ){
+  var emitError = function( options, error ){
     socket.emit('screenshot-error', {
-      id : id,
+      id : options.id,
       error : error
     });
   };
 
+  var emitSuccess = function( options, data ){
+    if ( options.crop && options.crop.width && options.crop.height ){
+      PNGCrop.cropToStream(data, options.crop, function(err, stream) {
+        if (err) {
+          emitError(options, 'Can\'t crop image');
+          return;
+        }
+        toArray(stream, function (err, arr) {
+          if (err) {
+            emitError(options, err);
+            return;
+          }
+          socket.emit('screenshot', {
+            id : options.id,
+            data : Buffer.concat(arr)
+          });
+        });
+      });
+    } else {
+      socket.emit('screenshot', {
+        id : options.id,
+        data : data
+      });
+    }
+  };
+
+
   socket.on('take-screenshot', function(options){
-    takeScreenshot(options, emitSuccess.bind(null, options.id), emitError.bind(null, options.id));
+    takeScreenshot(options, emitSuccess.bind(null, options), emitError.bind(null, options));
   });
 
   socket.on('close', function(){
@@ -37,19 +59,17 @@ socket.on('connect', function(){
 });
 
 
-function takeScreenshot(options, success /* error */){
+function takeScreenshot(options, success, error){
 
   if ( (options.format !== 'png' && options.format !== 'jpeg') || !options.format) {
     options.format = 'png';
   }
 
-  // It looks like the browser UI is taken into account on linux.
-  // TODO(FWeinb): confirm this
-  if ( process.platform === 'linux') {
-    options.height += 38;
-  } else if ( process.platform === 'win32' ) {
-    options.height += 60;
+  if ( !options.width || !options.height){
+    error('At least `height` and `width` must be set');
+    return;
   }
+
 
   var win = gui.Window.open(options.url, {
     width: options.width,

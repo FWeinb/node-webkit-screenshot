@@ -4,9 +4,12 @@
   "main": "index.html",
   "window": {
     "show": false,
-    "show_in_taskbar": false
+    "show_in_taskbar": false,
+    "toolbar" : false
   },
   "dependencies": {
-    "socket.io-client": "^1.0.6"
+    "socket.io-client": "^1.0.6",
+    "stream-to-array": "^2.0.0",
+    "png-crop": "0.0.0"
   }
 }
