@@ -82,15 +82,15 @@ See this [`.travis.yml`](https://github.com/FWeinb/node-webkit-screenshot/blob/m
 
 # Changelog
 
-#### `0.2.1`
+##### `0.2.1`
   * Add `crop` option.
   * remove `toolbar` for node-webkit application
 
-#### `0.2.0`
+##### `0.2.0`
   * Rewrite using socket.io to communicate between a single nw-snapshot instance.
   * Promise based API
 
-#### `0.1.0`
+##### `0.1.0`
   * 0.1.0 Inital release
 
 
