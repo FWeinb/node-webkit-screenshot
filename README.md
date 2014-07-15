@@ -81,12 +81,9 @@ See this [`.travis.yml`](https://github.com/FWeinb/node-webkit-screenshot/blob/m
 
 
 # Changelog
-##### `0.2.2`
-
-  * remove `toolbar` for node-webkit 
 
 ##### `0.2.1`
-
+  * remove `toolbar` for node-webkit 
   * Add `crop` option.
 
 ##### `0.2.0`
