@@ -75,7 +75,8 @@ function takeScreenshot(options, success, error){
     width: options.width,
     height: options.height,
     show: show,
-    frame: false
+    frame: false,
+    toolbar: false
   });
 
   win.on('document-end', function(){
