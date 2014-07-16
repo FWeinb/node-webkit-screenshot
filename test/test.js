@@ -22,6 +22,18 @@ describe('screenshot', function(){
 
   });
 
+  it('should produce pngs bigger than the screen', function(done){
+    this.timeout(timeout);
+
+    screenshot({url : 'about:blank', width : 2500, height : 2500}).then(function(data){
+      var size = imageSize(data);
+      assert.equal(size.width, 2500);
+      assert.equal(size.height, 2500);
+      done();
+    });
+
+  });
+
   it('should have a `delay` option', function(done){
     this.timeout(timeout);
     var now = new Date();

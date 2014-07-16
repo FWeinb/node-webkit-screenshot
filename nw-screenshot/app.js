@@ -3,7 +3,7 @@
 
 var gui = nwrequire('nw.gui');
 var PNGCrop = require('png-crop');
-var toArray = require('stream-to-array')
+var toArray = require('stream-to-array');
 var socket = require('socket.io-client')('http://localhost:3000');
 
 var show = process.env.NODESCREENSHOT_SHOW === '1' ? true : false;
