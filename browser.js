@@ -56,8 +56,8 @@ var createBrowser = function(options){
 
   });
 
-  process.env.NWS_PORT = options.port;
-  server.listen(process.env.NWS_PORT || 3000);
+  process.env.NWS_PORT = options.port || 3000;
+  server.listen(process.env.NWS_PORT);
 
   spawn(nodewebkit, [
     '.'
