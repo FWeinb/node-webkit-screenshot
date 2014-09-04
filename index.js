@@ -10,7 +10,7 @@ process.on('exit', function() {
 
 /**
  * Takes an options object liek
- * { url : '', delay : [seconds], width : [size], heihgt :  [size], format : 'png|jpeg' default png };
+ * { url : '', delay : [seconds], width : [size], height :  [size], format : 'png|jpeg' default png };
  * returns a stream
  */
 module.exports = function(options){
