@@ -16,7 +16,7 @@ process.on('exit', function() {
 module.exports = function(options){
   return new Promise(function(resolve, reject) {
     browserManager
-    .getBrowser()
+    .getBrowser(options)
     .then(function(browser){
       browser
       .screenshot(options)

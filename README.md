@@ -29,6 +29,13 @@ screenshot({
 
 #### screenshot(options)
 
+##### port
+
+Type: `number`
+Default: `3000`
+
+Specify custom port number for the webkit browser
+
 ##### delay
 
 Type: `number` *(seconds)*
