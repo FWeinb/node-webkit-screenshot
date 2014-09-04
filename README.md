@@ -22,7 +22,7 @@ screenshot({
 })
 .then(function(buffer){
   fs.writeFile('./out.png', buffer, function(err){
-
+    process.exit(0);
   });
 });
 ```
