@@ -40,7 +40,7 @@ Browser.prototype.screenshot = function(options){
 
 var _isStarted;
 var connection;
-var createBrowser = function(){
+var createBrowser = function(options){
   _isStarted = new Promise(function(resolve, reject){
 
     io.on('connection', function(socket){
@@ -56,7 +56,8 @@ var createBrowser = function(){
 
   });
 
-  server.listen(3000);
+  process.env.NWS_PORT = options.port || 3000;
+  server.listen(process.env.NWS_PORT);
 
   spawn(nodewebkit, [
     '.'
@@ -70,8 +71,8 @@ var createBrowser = function(){
 
 module.exports = {
 
-  getBrowser : function(){
-    return _isStarted || createBrowser();
+  getBrowser : function(options){
+    return _isStarted || createBrowser(options);
   },
 
   close : function(){
