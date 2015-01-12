@@ -1,12 +1,8 @@
 'use strict';
 
-var browserManager = require('./browser.js');
 var Promise = require('bluebird');
 
-
-process.on('exit', function() {
- browserManager.close();
-});
+var browserManager = require('./browser.js');
 
 /**
  * Takes an options object liek
@@ -25,3 +21,9 @@ module.exports = function(options){
     });
   });
 };
+
+module.exports.close = function(){
+  browserManager.close();
+};
+
+process.on('exit', module.exports.close);

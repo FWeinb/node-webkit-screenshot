@@ -4,8 +4,9 @@ var path = require('path');
 
 var spawn = require('win-spawn');
 var Promise = require('bluebird');
-var server = require('http').createServer();
-var io = require('socket.io').listen(server);
+var http = require('http');
+var socketio = require('socket.io');
+
 
 var app =  path.join(__dirname, 'nw-screenshot');
 var nodewebkit = require('nodewebkit').findpath();
@@ -37,10 +38,15 @@ Browser.prototype.screenshot = function(options){
   return deferred.promise;
 };
 
-
-var _isStarted;
+var server;
+var io;
 var connection;
+var _isStarted;
+
 var createBrowser = function(options){
+  server = http.createServer();
+  io = socketio.listen(server);
+
   _isStarted = new Promise(function(resolve, reject){
 
     io.on('connection', function(socket){
@@ -77,9 +83,14 @@ module.exports = {
 
   close : function(){
     _isStarted = undefined;
+
     if ( connection ){
       connection.emit('close');
+      connection = undefined;
     }
-    server.close();
+
+    try{
+      server.close();
+    } catch(e){ }
   }
 };

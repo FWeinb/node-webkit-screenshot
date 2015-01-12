@@ -54,6 +54,7 @@ socket.on('connect', function(){
 
   socket.on('close', function(){
     gui.Window.get().close(true);
+    process.exit();
   });
 
 });
@@ -76,10 +77,14 @@ function takeScreenshot(options, success, error){
     height: options.height,
     show: show,
     frame: false,
-    toolbar: false
+    toolbar: false,
+    transparent: true
   });
 
-  win.on('document-end', function(){
+  win.on('loaded', function(){
+    if (options.forceTransparency){
+      win.eval(null, "document.body.style.background='transparent';");
+    }
     setTimeout(function(){
       win.capturePage(function(buffer) {
         success(buffer);
