@@ -25,10 +25,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "nodewebkit": "^0.10.0-rc1-3",
+    "nodewebkit": "^0.11.5",
     "win-spawn": "^2.0.0",
-    "socket.io": "^1.1.0",
-    "bluebird": "^2.2.1"
+    "socket.io": "^1.2.1",
+    "bluebird": "^2.6.4"
   },
   "devDependencies": {
     "assert": "^1.1.1",
