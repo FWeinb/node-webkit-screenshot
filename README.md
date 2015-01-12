@@ -99,6 +99,12 @@ See this [`.travis.yml`](https://github.com/FWeinb/node-webkit-screenshot/blob/m
 
 # Changelog
 
+##### `0.3.1`
+  * Fix black backgrounds in screenshots.
+
+##### `0.3.0`
+  * Add `close()` method.
+
 ##### `0.2.1`
   * remove `toolbar` for node-webkit
   * Add `crop` option.

@@ -8,10 +8,6 @@ var socket = require('socket.io-client')('http://localhost:' + process.env.NWS_P
 
 var show = process.env.NODESCREENSHOT_SHOW === '1' ? true : false;
 
-if (show){
-  gui.Window.get().show();
-}
-
 socket.on('connect', function(){
 
   var emitError = function( options, error ){
@@ -78,7 +74,7 @@ function takeScreenshot(options, success, error){
     show: show,
     frame: false,
     toolbar: false,
-    transparent: true
+    transparent: options.forceTransparency || false
   });
 
   win.on('loaded', function(){
