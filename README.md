@@ -21,10 +21,12 @@ screenshot({
   height : 768
 })
 .then(function(buffer){
-  fs.writeFile('./out.png', buffer, function(err){
-    process.exit(0);
+  fs.writeFile('./out.png', buffer, function(){
+    // This will close the screenshot service 
+    screenshot.close();
   });
 });
+
 ```
 
 #### screenshot(options)
@@ -80,6 +82,14 @@ A crop object may look like this:
   height : 100
 }
 ```
+
+
+#### close()
+
+This will close the `node-webkit` process. You have to call this function before node is able to exit.
+
+
+
 ## Troubleshooting
 
 If you would like to use this on travis or with a framebuffer like xvfb than you need to set the environment variable
