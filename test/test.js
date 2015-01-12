@@ -25,10 +25,12 @@ describe('screenshot', function(){
   it('should produce pngs bigger than the screen', function(done){
     this.timeout(timeout);
 
-    screenshot({url : 'about:blank', width : 1023, height : 1023}).then(function(data){
+    var dim = (process.env.NODESCREENSHOT_SHOW === '1') ? {width : 1023, height : 768} : {width:2500, height: 2500};
+
+    screenshot({url : 'about:blank', width : dim.width, height : dim.height}).then(function(data){
       var size = imageSize(data);
-      assert.equal(size.width, 1023);
-      assert.equal(size.height, 1023);
+      assert.equal(size.width, dim.width);
+      assert.equal(size.height, dim.height);
       done();
     });
 
