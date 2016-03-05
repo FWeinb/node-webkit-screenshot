@@ -1,6 +1,6 @@
 {
   "name": "node-webkit-screenshot",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Take screenshots using node-webkit",
   "repository": "FWeinb/node-webkit-screenshot",
   "main": "index.js",
@@ -25,17 +25,17 @@
   },
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.3.3",
+    "cross-spawn": "^2.1.5",
     "nodewebkit": "^0.11.5",
-    "win-spawn": "^2.0.0",
-    "socket.io": "^1.2.1",
-    "bluebird": "^2.6.4"
+    "socket.io": "^1.4.5"
   },
   "devDependencies": {
     "assert": "^1.1.1",
-    "image-size": "^0.3.0",
-    "lodash.once": "^2.4.1",
-    "concat-stream": "^1.4.6",
-    "is-png": "^0.1.1",
-    "is-jpg": "^0.1.2"
+    "image-size": "^0.4.0",
+    "lodash.once": "^4.0.0",
+    "concat-stream": "^1.5.1",
+    "is-png": "^1.0.0",
+    "is-jpg": "^1.0.0"
   }
 }

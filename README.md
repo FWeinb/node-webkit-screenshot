@@ -22,7 +22,7 @@ screenshot({
 })
 .then(function(buffer){
   fs.writeFile('./out.png', buffer, function(){
-    // This will close the screenshot service 
+    // This will close the screenshot service
     screenshot.close();
   });
 });
@@ -99,6 +99,10 @@ See this [`.travis.yml`](https://github.com/FWeinb/node-webkit-screenshot/blob/m
 
 # Changelog
 
+##### `0.3.2`
+  * Fix installation of sub modules for nw-screenshot
+  * Upgrade various modules
+
 ##### `0.3.1`
   * Fix black backgrounds in screenshots.
 
@@ -117,5 +121,3 @@ See this [`.travis.yml`](https://github.com/FWeinb/node-webkit-screenshot/blob/m
 ##### `0.1.0`
 
   * 0.1.0 Inital release
-
-

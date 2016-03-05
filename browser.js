@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var spawn = require('win-spawn');
+var spawn = require('cross-spawn');
 var Promise = require('bluebird');
 var http = require('http');
 var socketio = require('socket.io');
