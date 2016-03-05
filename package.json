@@ -5,7 +5,7 @@
   "repository": "FWeinb/node-webkit-screenshot",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm install --prefix ./nw-screenshot",
+    "postinstall": "cd nw-screenshot && npm install",
     "test": "mocha test"
   },
   "keywords": [
